@@ -2,11 +2,10 @@ import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { OpenAIEmbeddings, ChatOpenAI } from '@langchain/openai';
 import { loadQAStuffChain } from 'langchain/chains';
-import fs from 'fs';
 
 export async function askQuestion(question: string, persona?: string): Promise<string> {
-
-    const rawText = fs.readFileSync('public/constitution.txt', 'utf8');
+    const res = await fetch('https://law-bot.vercel.app/constitution.txt');
+    const rawText = await res.text();
 
     const splitter = new RecursiveCharacterTextSplitter({
         chunkSize: 500,
