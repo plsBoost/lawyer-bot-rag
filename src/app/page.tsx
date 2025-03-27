@@ -23,7 +23,7 @@ export default function Home() {
   const [persona, setPersona] = useState<'clerk' | 'student' | 'founder'>('clerk');
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -73,16 +73,10 @@ export default function Home() {
 
   return (
 
-    <main className={`${darkMode ? 'dark' : ''}`}>
+    <main className="">
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
         <div className="flex justify-between items-center p-4 border-b dark:border-gray-700">
           <h1 className="text-2xl font-bold">⚖️ Law Bot</h1>
-          <button
-            onClick={() => setDarkMode((prev) => !prev)}
-            className="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded"
-          >
-            {darkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
         </div>
 
         <div className="w-full max-w-2xl mx-auto p-4 space-y-2">
