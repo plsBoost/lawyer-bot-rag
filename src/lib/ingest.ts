@@ -1,12 +1,12 @@
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { FaissStore } from '@langchain/community/vectorstores/faiss';
+import fs from 'fs';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 
 export async function ingestDocs() {
-    const res = await fetch('https://law-bot.vercel.app/constitution.txt');
-    const rawText = await res.text();
+    const rawText = fs.readFileSync('public/constitution.txt', 'utf8');
 
     const splitter = new RecursiveCharacterTextSplitter({
         chunkSize: 500,
