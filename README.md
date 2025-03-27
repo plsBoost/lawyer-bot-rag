@@ -9,6 +9,14 @@ Built with:
 
 ---
 
+## ✅ Live Demo
+
+🔗 [https://law-bot.vercel.app](https://law-bot.vercel.app)
+
+Ask legal questions with style — powered by RAG and OpenAI's LLM.
+
+---
+
 ## 🚀 Features
 
 - Ask questions about the Constitution
