@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚖️ Law Bot — A Retrieval-Augmented Generation (RAG) App
 
-## Getting Started
+A simple RAG (Retrieval-Augmented Generation) web app that answers questions about the U.S. Constitution using a custom dataset, embeddings, and a local vector store.
 
-First, run the development server:
+Built with:
+- 🧠 LangChain.js
+- 💬 OpenAI API
+- 🧱 Next.js + React + Tailwind CSS
+
+---
+
+## 🚀 Features
+
+- Ask questions about the Constitution
+- Retrieves relevant chunks using vector similarity
+- Uses OpenAI to generate a response with context
+- Lightweight chat UI built with React and Tailwind
+- Fully local (no hosted DB or backend needed)
+
+---
+
+## 🧰 Stack
+
+| Layer       | Tech Used                     |
+|-------------|-------------------------------|
+| Frontend    | React (Next.js App Router)    |
+| Styling     | Tailwind CSS                  |
+| Backend API | Next.js API route             |
+| Embedding   | OpenAI `text-embedding-ada-002` |
+| LLM         | OpenAI GPT-3.5 via LangChain  |
+| Vector DB   | In-memory vector store (MemoryVectorStore) |
+
+---
+
+## 📦 Setup
+
+```bash
+git clone https://github.com/your-username/law-bot.git
+cd law-bot
+
+npm install
+```
+
+### Add your `.env.local` file
+
+```
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxx
+```
+
+### Run the app
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📄 Data
 
-## Learn More
+The dataset is the full U.S. Constitution in plain text, retrieved from [Project Gutenberg](https://www.gutenberg.org/ebooks/5).  
+It’s preprocessed into ~500-character overlapping chunks and embedded via OpenAI.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📚 How It Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Load and split the text into semantic chunks
+2. Generate embeddings using OpenAI
+3. Store them in memory via LangChain's `MemoryVectorStore`
+4. On question: retrieve similar chunks and use LLM to answer
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Future Improvements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Swap in FAISS or Pinecone for persistent vector storage
+- Add streaming / token-based generation
+- Show sources / references per answer
+- Deploy via Vercel or Docker
+
+---
+
+## 🧑‍⚖️ Demo Questions
+
+Try asking:
+
+- "What does the First Amendment say?"
+- "What powers does Congress have?"
+- "What is the Fourth Amendment?"
+
+---
+
+## 📄 Project Write-Up
+
+For a detailed write-up on tool choices, challenges, and potential improvements, see:
+
+👉 [law-bot-writeup.md](./law-bot-writeup.md)
