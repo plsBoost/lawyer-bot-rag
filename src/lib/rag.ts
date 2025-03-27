@@ -2,7 +2,6 @@ import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { OpenAIEmbeddings, ChatOpenAI } from '@langchain/openai';
 import { loadQAStuffChain } from 'langchain/chains';
-import fs from 'fs';
 
 export async function askQuestion(question: string, persona?: string): Promise<string> {
 

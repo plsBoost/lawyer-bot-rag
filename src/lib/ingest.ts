@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { FaissStore } from '@langchain/community/vectorstores/faiss';
